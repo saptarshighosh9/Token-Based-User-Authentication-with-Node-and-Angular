@@ -1,0 +1,84 @@
+<div class="eachpage" style="padding-top:10px">
+    <div class="row">
+        <div class="col-xs-12 col-md-offset-2 col-md-8 mainpage">
+            <!-- Template when user is not logged in -->
+            <div class="row" style="padding-bottom:30px" ng-if="!checkinglogedin">
+                <!-- Login/Signup Template-->
+                <div class="col-xs-10 col-xs-offset-1 col-md-12">
+                    <div class="row">
+                        <h2 class="hidden-xs">JWT Authentication App<hr></h2>
+                        <h5 class="visible-xs">JWT Auth App <hr></h5>
+                    </div>
+                    <div class="row">
+                        <!-- Login Template -->
+                        <div class="col-xs-12 col-md-6 col-md-offset-2" ng-if="!reg && logint">
+                            <h3>Login</h3>
+                            <form name="loginform" ng-submit="login()" novalidate>
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" placeholder="username" name="loginemail" id="email"  ng-model="loginemail" required>
+                                        <small ng-show="loginform.loginemail.$invalid && !loginform.loginemail.$pristine" class="help-block">Enter a valid email</small>
+                                    </div>
+                                </div>
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" placeholder="Password" id="loginpassword"  ng-model="loginpassword" required>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <button type="submit" class="btn btn-success btn-lg" ng-disabled="loginform.$invalid" id="loginbtn">Login</button>
+                                        <a ng-click="registershow()">Signup</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <br>
+                            <div class="alert alert-warning alert-dismissible" role="alert" ng-if="loginerr">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <strong>Warning!</strong> User Does not Exist
+                            </div>
+                        </div>
+                        <!-- Signup Template -->
+                        <div class="col-xs-12 col-md-6 col-md-offset-2" ng-if="!logint && reg">
+                            <h3>Signup</h3>
+                            <form name="userForm" ng-submit="register()" novalidate>
+                                <!-- Email -->
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                                        <label>Email</label>
+                                        <input class="form-control" placeholder="Email" type="email" name="eemail" ng-model="user.email" required>
+                                        <small ng-show="userForm.eemail.$invalid && !userForm.eemail.$pristine" class="help-block">Enter a valid email</small>
+                                    </div>
+                                </div>
+                                <!-- Password -->
+                                <div class="row control-group">
+                                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" placeholder="password" name="ppassword" ng-model="user.password" ng-minlength="5" ng-maxlength="30" required>
+                                        <small ng-show="userForm.ppassword.$error.minlength || userForm.ppassword.$error.maxlength" class="help-block">Password should be of minimum 5 charecters</small>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <button type="submit" class="btn btn-success btn-lg" ng-disabled="userForm.$invalid">Signup</button>
+                                        <a ng-click="registerhide()">Login</a>
+                                    </div>
+                                </div>
+                            </form> 
+                            <br>
+                            <div class="alert alert-warning alert-dismissible" role="alert" ng-if="regerr">
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <strong>Warning!</strong> User Already Exists / Server
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

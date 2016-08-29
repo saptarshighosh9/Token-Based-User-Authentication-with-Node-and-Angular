@@ -1,0 +1,18 @@
+<div ng-if="!isauth">
+    <div ng-include="'views/login.html'" ng-controller="loginregCtrl"></div>
+</div>
+<div class="eachpage" style="padding-top:10px" ng-if="isauth" ng-controller="homeCtrl">
+	<div class="row">
+		<div class="col-xs-12 col-md-12 mainpage">
+			<div class="col-xs-12 col-sm-12 col-md-5 col-md-offset-2">
+				<div class="row" style="padding-bottom:80px">
+					<div class="col-md-12">
+						<p>Profile Info</p>
+						<hr>{{profiledata.info.email}}<hr>
+						<a ng-click="logout()"><small>Logout</small></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
